@@ -50,7 +50,6 @@ public class GameManager : MonoBehaviour
 
         if (exp == nextExp[level])
         {
-            Debug.Log("Level Up");
             level++;
             exp = 0;
 
