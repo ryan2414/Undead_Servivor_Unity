@@ -30,14 +30,14 @@ public class GameManager : MonoBehaviour
         instance = this;
     }
 
-    private void Start()
+    public void GameStart()
     {
         health = maxHealth;
 
         //임시 무기 할당 
         uiLevelUp.Select(0);
 
-        
+        isLive = true;
     }
 
     private void Update()
