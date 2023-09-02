@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -23,12 +24,6 @@ public class Player : MonoBehaviour
         hands = GetComponentsInChildren<Hand>(true);
     }
 
-    void Start()
-    {
-
-    }
-
-
     void Update()
     {
         // Old Input System
@@ -42,6 +37,8 @@ public class Player : MonoBehaviour
         // Old version
         //Vector2 nextVec = inputVec.normalized * speed * Time.deltaTime;
 
+        if (!GameManager.instance.isLive) return;
+
         Vector2 nextVec = inputVec * speed * Time.deltaTime; 
         rigid.MovePosition(rigid.position + nextVec);
 
@@ -49,6 +46,8 @@ public class Player : MonoBehaviour
 
     private void LateUpdate()
     {
+        if (!GameManager.instance.isLive) return;
+
         animator.SetFloat("Speed", inputVec.magnitude);
 
         if (inputVec.x != 0)

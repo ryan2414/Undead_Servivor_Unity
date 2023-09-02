@@ -38,7 +38,7 @@ public class HUD : MonoBehaviour
         {
             case InfoType.Exp:
                 float curExp = gm.exp;
-                float maxExp = gm.nextExp[gm.level];
+                float maxExp = gm.nextExp[Mathf.Min(gm.level, gm.nextExp.Length - 1)];
                 mySlider.value = curExp / maxExp;
                 break;
             case InfoType.Level:
@@ -58,7 +58,7 @@ public class HUD : MonoBehaviour
                 float maxHp = gm.maxHealth;
                 mySlider.value = curHp / maxHp;
                 break;
-            
+
         }
     }
 }
